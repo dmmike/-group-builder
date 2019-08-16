@@ -5,6 +5,14 @@
       <option v-for="affiliation in affiliations">{{affiliation}}</option>
     </select>
     <hr>
+    <dropdown>
+      <template slot="btn">Add a character</template>
+      <template slot="body">
+        <ul>
+          <li v-for="option in options">{{option.name}} ({{option.cost}})</li>
+        </ul>
+      </template>
+    </dropdown>
     <table class="table table-striped">
       <colgroup>
         <col width="auto">
@@ -37,6 +45,11 @@
                 chosen_affiliations: 'Hogwarts',
                 options: [],
             }
+        },
+        computed: {
+            // orderedOptions: () => {
+            //     return _.orderBy(this.options, 'name')
+            // }
         },
         methods: {
             getOptions() {
