@@ -8,14 +8,17 @@
     <table class="table table-striped">
       <colgroup>
         <col width="auto">
+        <col width="auto">
       </colgroup>
       <thead>
+      <th>Cost</th>
       <th>Name</th>
       </thead>
       <tbody>
       <tr v-for="option in options">
+        <td>{{option.cost}}</td>
         <td>
-          {{option}}
+          {{option.name}}
         </td>
       </tr>
       </tbody>
@@ -28,19 +31,19 @@
     import Characters from "@/controllers/DataTables/Characters"
 
     export default {
-        components: {Affiliations, Characters},
         data() {
             return {
                 affiliations: Object.keys(Affiliations),
                 chosen_affiliations: 'Hogwarts',
-                options: []
+                options: [],
             }
         },
         methods: {
             getOptions() {
-                this.options = [];
+                this.options = []
+
                 Affiliations[this.chosen_affiliations].forEach(identifier => {
-                    this.options.push(Characters[identifier].name)
+                    this.options.push(Characters[identifier])
                 })
             }
         },
