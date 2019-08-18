@@ -61,6 +61,12 @@ export default class Character {
       })
       return totalCost
     }
+
+    this.doesNotHaveSpell = function (spellName) {
+      return this.innate.name !== spellName && this.spellsChosen.findIndex(spell => {
+        return spell.name === spellName
+      }) === -1
+    }
   }
 
 }

@@ -2,7 +2,7 @@
   <div>
     <p>{{costTotal}} of <input type="number" v-model="costLimit"></p>
     <label id="affiliationSelectLabel" for="affiliationSelect">Affiliation:</label>
-    <select id="affiliationSelect" v-model="chosen_affiliations" @change="getOptions">
+    <select id="affiliationSelect" v-model="chosen_affiliations">
       <option v-for="affiliation in affiliations">{{affiliation}}</option>
     </select>
     <hr>
@@ -32,20 +32,27 @@
         <td>{{character.name}}</td>
         <td>{{character.cost}} ({{character.totalCost()}})</td>
         <td><span v-if="character.innateType === 'spell'">{{character.innate.name}}</span><span
-          v-for="spell in character.spellsChosen"> {{spell.name}}</span></td>
+          v-for="(spell, index) in character.spellsChosen" @click="character.spellsChosen.splice(index, 1)">{{spell.name}}</span>
+        </td>
         <td>
-          <dropdown v-if="character.spellsChosen.length < character.spellbook">
+          <dropdown :close-on-click="true" v-if="character.spellsChosen.length < character.spellbook">
             <template slot="btn">Add spell</template>
             <template slot="body">
               <ul>
-                <li v-for="spell in getSpellOptionsForCharacter(character)">{{spell}}</li>
+                <li v-for="spell in getSpellOptionsForCharacter(character)" @click="character.spellsChosen.push(spell)">
+                  {{spell.name}} ({{spell.cost}})
+                </li>
               </ul>
             </template>
           </dropdown>
         </td>
+        <td>
+          <span v-for="(item, index) in character.itemsChosen" @click="character.itemsChosen(index, 1)">{{item.name}}</span>
+        </td>
         <td></td>
-        <td></td>
-        <td><button @click="characters.splice(index, 1)">Verwijder</button></td>
+        <td>
+          <button @click="characters.splice(index, 1)">Verwijder</button>
+        </td>
       </tr>
       </tbody>
     </table>
@@ -117,12 +124,10 @@
         methods: {
             getSpellOptionsForCharacter(character) {
                 return Object.keys(Spells).filter(spellName => {
-                    return Spells[spellName].cost <= this.goldRemaining && this.requirementsFulfilled(character, Spells[spellName].requirements)
+                    return Spells[spellName].cost <= this.goldRemaining && character.doesNotHaveSpell(spellName) && this.requirementsFulfilled(character, Spells[spellName].requirements)
                 }).map(spellName => {
                     return Spells[spellName]
                 })
-            },
-            getOptions() {
             },
             requirementsFulfilled(character, requirements) {
                 switch (requirements) {
@@ -134,7 +139,6 @@
             },
         },
         mounted() {
-            this.getOptions()
         }
     }
 </script>
