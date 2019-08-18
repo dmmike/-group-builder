@@ -1,15 +1,16 @@
 export default class Spell {
-  constructor(name, difficulty, cost, type, range, cooldown, effect, hasUpkeep = false, upkeepCost = 0, darkOnly = false) {
+  constructor(cost, name, difficulty, powerCost, type, range, cooldown, effect, hasUpkeep = false, upkeepCost = 0, requirements = null) {
+    this.cost = cost
     this.name = name
     this.difficulty = difficulty
-    this.cost = cost
+    this.cost = powerCost
     this.type = type
     this.range = range
     this.cooldown = cooldown
     this.effect = effect
     this.hasUpkeep = hasUpkeep
     this.upkeepCost = upkeepCost
-    this.darkOnly = darkOnly
+    this.requirements = requirements
   }
 
 }

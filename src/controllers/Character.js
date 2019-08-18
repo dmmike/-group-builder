@@ -1,5 +1,8 @@
+import Spell from "@/controllers/Spell"
+
 export default class Character {
   /**
+   * @param id
    * @param name
    * @param cost
    * @param mastery
@@ -18,7 +21,8 @@ export default class Character {
    * @param health
    * @param models
    */
-  constructor(name, cost, mastery, defense, cunning, type, magic, courage, temper, wisdom, traits, innate, spellbook, items, isHorde = false, health = 5, models = 1) {
+  constructor(id, name, cost, mastery, defense, cunning, type, magic, courage, temper, wisdom, traits, innate, spellbook, items, isHorde = false, health = 5, models = 1) {
+    this.id = id
     this.name = name
     this.mastery = mastery
 
@@ -34,6 +38,7 @@ export default class Character {
 
     this.traits = traits
     this.innate = innate
+    this.innateType = innate instanceof Spell ? 'spell' : 'attack'
     this.spellbook = spellbook
     this.items = items
 
@@ -41,6 +46,21 @@ export default class Character {
     this.isHorde = isHorde
     this.health = 5
     this.models = 1
+
+    this.spellsChosen = []
+    this.itemsChosen = []
+
+    this.totalCost = function () {
+      let totalCost = this.cost
+      this.spellsChosen.forEach(spell => {
+        totalCost += spell.cost
+      })
+
+      this.itemsChosen.forEach(item => {
+        totalCost += item.cost
+      })
+      return totalCost
+    }
   }
 
 }

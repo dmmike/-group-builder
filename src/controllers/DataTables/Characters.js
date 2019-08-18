@@ -6,7 +6,7 @@ import Attack from "@/controllers/Attack"
 
 export default {
   '001': new Character(
-    'Harry Potter', 9,
+    1, 'Harry Potter', 9,
     2, 2, 2, Spell.TYPE_LIGHT,
     7, 4, 9, 5,
     ['Apprentice', 'Chosen One', 'Gryffindor', 'Potioneer 1'],
@@ -15,7 +15,7 @@ export default {
     1
     ),
   '002': new Character(
-    'Hermoine Granger', 8,
+    2, 'Hermoine Granger', 8,
     2, 2, 2, Spell.TYPE_LIGHT,
     6, 4, 5, 7,
     ['Apprentice', 'Gryffindor', 'Potioneer 1'],
@@ -24,7 +24,7 @@ export default {
     2
   ),
   '003': new Character(
-    'Ron Weasley', 7,
+    3, 'Ron Weasley', 7,
     1, 2, 1, Spell.TYPE_LIGHT,
     5, 4, 6, 3,
     ['Apprentice', 'Gryffindor', 'Tactician'],
@@ -33,7 +33,7 @@ export default {
     2
   ),
   '004': new Character(
-    'Death Eater 1', 6,
+    4, 'Death Eater 1', 6,
     2, 1, 1, Spell.TYPE_DARK,
     8, 0, 9, 4,
     ['Dark Arts'],
@@ -42,7 +42,7 @@ export default {
     2
   ),
   '005': new Character(
-    'Death Eater 2', 6,
+    5, 'Death Eater 2', 6,
     2, 1, 1, Spell.TYPE_DARK,
     8, 0, 9, 4,
     ['Dark Arts', 'Duelling'],
@@ -51,7 +51,7 @@ export default {
     2
   ),
   '006': new Character(
-    'Death Eater 3', 6,
+    6, 'Death Eater 3', 6,
     2, 1, 1, Spell.TYPE_DARK,
     8, 0, 9, 4,
     ['Dark Arts', 'Potioneer 1'],
@@ -60,7 +60,7 @@ export default {
     2
   ),
   '007': new Character(
-    'Death Eater 4', 6,
+    7, 'Death Eater 4', 6,
     2, 1, 1, Spell.TYPE_DARK,
     8, 0, 9, 4,
     ['Dark Arts', 'Tactician'],
@@ -69,7 +69,7 @@ export default {
     2
   ),
   '008': new Character(
-    'Acromantula', 5,
+    8, 'Acromantula', 5,
     0, 1, 0, Spell.TYPE_NONE,
     0, 1, 1, 1,
     ['Beast', 'Fast', 'Horde', 'Scout'],
@@ -79,7 +79,7 @@ export default {
     true
   ),
   '009': new Character(
-    'Acromantula Swarm', 4,
+    9, 'Acromantula Swarm', 4,
     0, 1, 0, Spell.TYPE_NONE,
     0, 1, 1, 1,
     ['Beast', 'Fast', 'Horde', 'Scout', 'Swarm'],
@@ -91,7 +91,7 @@ export default {
     5
   ),
   '010': new Character(
-    'Bellatrix Lestrange', 14,
+    10, 'Bellatrix Lestrange', 14,
     3, 2, 3, Spell.TYPE_DARK,
     9, 1, 10, 6,
     ['Dark Arts', 'Duelling', 'Expert Wizard', ' Slytherin'],
@@ -100,7 +100,7 @@ export default {
     2
   ),
   '011': new Character(
-    'Peter Pettigrew', 10,
+    11, 'Peter Pettigrew', 10,
     2, 2, 2, Spell.TYPE_MIXED,
     0, 0, 1, 3,
     ['Dark Arts', 'Potioneer 2'],
@@ -109,7 +109,7 @@ export default {
     1
   ),
   '017': new Character(
-    'Draco Malfoy', 8,
+    17, 'Draco Malfoy', 8,
     2, 1, 2, Spell.TYPE_MIXED,
     4, 8, 10, 1,
     ['Apprentice', 'Dark Arts', 'Slytherin'],
@@ -118,7 +118,7 @@ export default {
     2
   ),
   '018': new Character(
-    'Gregory Goyle', 5,
+    18, 'Gregory Goyle', 5,
     1, 1, 1, Spell.TYPE_MIXED,
     1, 2, 7, 1,
     ['Apprentice', 'Dark Arts', 'Slytherin'],
@@ -127,7 +127,7 @@ export default {
     1
   ),
   '019': new Character(
-    'Vincent Crabbe', 5,
+    19, 'Vincent Crabbe', 5,
     1, 0, 1, Spell.TYPE_MIXED,
     1, 2, 7, 1,
     ['Apprentice', 'Dark Arts', 'Slytherin'],
@@ -136,7 +136,7 @@ export default {
     1
   ),
   '020': new Character(
-    'Luna Lovegood', 7,
+    20, 'Luna Lovegood', 7,
     2, 1, 1, Spell.TYPE_LIGHT,
     3, 3, 2, 2,
     ['Apprentice', 'Magical Creatures Expert', 'Ravenclaw'],
@@ -145,7 +145,7 @@ export default {
     2
   ),
   '021': new Character(
-    'Cho Chang', 6,
+    21, 'Cho Chang', 6,
     1, 1, 1, Spell.TYPE_LIGHT,
     4, 2, 3, 3,
     ['Apprentice', 'Ravenclaw'],
@@ -154,7 +154,7 @@ export default {
     2
   ),
   '022': new Character(
-    'Ginny Weasley', 5,
+    22, 'Ginny Weasley', 5,
     2, 1, 1, Spell.TYPE_LIGHT,
     3, 4, 4, 2,
     ['Apprentice', 'Gryffindor'],
@@ -163,7 +163,7 @@ export default {
     2
   ),
   '023': new Character(
-    'Fred Weasley', 8,
+    23, 'Fred Weasley', 8,
     2, 1, 1, Spell.TYPE_LIGHT,
     9, 3, 3, 2,
     ['Apprentice', 'Gryffindor', 'Potioneer 2'],
@@ -172,7 +172,7 @@ export default {
     2
   ),
   '024': new Character(
-    'George Weasley', 8,
+    24, 'George Weasley', 8,
     2, 1, 1, Spell.TYPE_LIGHT,
     9, 3, 3, 2,
     ['Apprentice', 'Gryffindor', 'Potioneer 2'],
@@ -181,7 +181,7 @@ export default {
     2
   ),
   '029': new Character(
-    'Severus Snape', 16,
+    29, 'Severus Snape', 16,
     3, 3, 3, Spell.TYPE_MIXED,
     9, 3, 6, 7,
     ['Dark Arts', 'Duellig', 'Expert Wizard', 'Potioneer 3', 'Potion Mastery 1', 'Professor', 'Slytherin'],
@@ -190,7 +190,7 @@ export default {
     2
   ),
   '030': new Character(
-    'Minerva McGonagall', 14,
+    30, 'Minerva McGonagall', 14,
     3, 2, 3, Spell.TYPE_LIGHT,
     9, 3, 6, 7,
     ['Duelling', 'Expert Wizard', 'Gryffindor', 'Leadership', 'Professor'],
@@ -199,7 +199,7 @@ export default {
     2
   ),
   '031': new Character(
-    'Dolores Umbridge', 10,
+    31, 'Dolores Umbridge', 10,
     2, 1, 2, Spell.TYPE_MIXED,
     5, 2, 8, 2,
     ['Dark Arts', 'Professor', 'Slytherin'],
@@ -208,7 +208,7 @@ export default {
     1
   ),
   '032': new Character(
-    'Gilderoy Lockhart', 8,
+    32,'Gilderoy Lockhart', 8,
     1, 1, 2, Spell.TYPE_MIXED,
     2, 2, 8, 2,
     ['Professor', 'Ravenclaw'],
@@ -217,7 +217,7 @@ export default {
     1
   ),
   '036': new Character(
-    'Troll', 9,
+    36, 'Troll', 9,
     0, 1, 0, Spell.TYPE_NONE,
     0, 5, 3, 0,
     ['Beast', 'Large', 'Magical Immunity 1', 'Physical Resistance 2'],
@@ -228,7 +228,7 @@ export default {
     9
   ),
   '037': new Character(
-    'Dementor', 9,
+    37, 'Dementor', 9,
     0, 2, 2, Spell.TYPE_DARK,
     5, 4, 10, 1,
     ['Beast', 'Fast', 'Fly', 'Horde', 'Physical Resistance 1'],
@@ -239,7 +239,7 @@ export default {
     9
   ),
   '038': new Character(
-    'Unicorn', 8,
+    38, 'Unicorn', 8,
     0, 3, 2, Spell.TYPE_LIGHT,
     6, 6, 1, 7,
     ['Beast', 'Large', 'Scout'],
@@ -250,7 +250,7 @@ export default {
     9
   ),
   '040': new Character(
-    'Pansy Parkinson', 6,
+    40, 'Pansy Parkinson', 6,
     1, 0, 2, Spell.TYPE_LIGHT,
     4, 2, 9, 2,
     ['Apprentice', 'Slytherin'],
@@ -259,7 +259,7 @@ export default {
     1
   ),
   '041': new Character(
-    'Neville Longbottom', 8,
+    41, 'Neville Longbottom', 8,
     2, 1, 1, Spell.TYPE_LIGHT,
     3, 3, 5, 2,
     ['Apprentice', 'Brave', 'Gryffindor', 'Herbology Expert'],
@@ -268,7 +268,7 @@ export default {
     1
   ),
   '042': new Character(
-    'Cedric Diggory', 9,
+    42, 'Cedric Diggory', 9,
     2, 1, 2, Spell.TYPE_LIGHT,
     6, 4, 2, 5,
     ['Apprentice', 'Hufflepuff'],
@@ -277,7 +277,7 @@ export default {
     1
   ),
   '043': new Character(
-    'Albus Dumbledore', 18,
+    43, 'Albus Dumbledore', 18,
     3, 2, 4, Spell.TYPE_MIXED,
     12, 5, 2, 9,
     ['Duelling', 'Gryffindor', 'Leadership', 'Master Wizard', 'Supreme Mugwump'],
@@ -286,7 +286,7 @@ export default {
     3
   ),
   '044': new Character(
-    'Argus Filch', 4,
+    44, 'Argus Filch', 4,
     0, 1, 2, Spell.TYPE_LIGHT,
     0, 1, 10, 4,
     ['Muggle', 'Scout'],
@@ -295,7 +295,7 @@ export default {
     0
   ),
   '045': new Character(
-    'Kreacher', 9,
+    45, 'Kreacher', 9,
     0, 1, 3, Spell.TYPE_LIGHT,
     7, 3, 12, 2,
     ['Elf', 'Magic Immunity 1', 'Magic Resistance 1'],
@@ -304,7 +304,7 @@ export default {
     0
   ),
   '046': new Character(
-    'Dobby', 10,
+    46, 'Dobby', 10,
     0, 1, 3, Spell.TYPE_LIGHT,
     7, 4, 12, 4,
     ['Elf', 'Magic Immunity 1', 'Magic Resistance 1'],
