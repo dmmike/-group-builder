@@ -5,7 +5,7 @@ import Spells from "@/controllers/DataTables/Spells"
 import Attack from "@/controllers/Attack"
 
 export default {
-  '001': new Character(
+  1: new Character(
     1, 'Harry Potter', 9,
     2, 2, 2, Spell.TYPE_LIGHT,
     7, 4, 9, 5,
@@ -14,7 +14,7 @@ export default {
     2,
     1
     ),
-  '002': new Character(
+  2: new Character(
     2, 'Hermoine Granger', 8,
     2, 2, 2, Spell.TYPE_LIGHT,
     6, 4, 5, 7,
@@ -23,7 +23,7 @@ export default {
     2,
     2
   ),
-  '003': new Character(
+  3: new Character(
     3, 'Ron Weasley', 7,
     1, 2, 1, Spell.TYPE_LIGHT,
     5, 4, 6, 3,
@@ -32,7 +32,7 @@ export default {
     1,
     2
   ),
-  '004': new Character(
+  4: new Character(
     4, 'Death Eater 1', 6,
     2, 1, 1, Spell.TYPE_DARK,
     8, 0, 9, 4,
@@ -41,7 +41,7 @@ export default {
     1,
     2
   ),
-  '005': new Character(
+  5: new Character(
     5, 'Death Eater 2', 6,
     2, 1, 1, Spell.TYPE_DARK,
     8, 0, 9, 4,
@@ -50,7 +50,7 @@ export default {
     1,
     2
   ),
-  '006': new Character(
+  6: new Character(
     6, 'Death Eater 3', 6,
     2, 1, 1, Spell.TYPE_DARK,
     8, 0, 9, 4,
@@ -59,7 +59,7 @@ export default {
     1,
     2
   ),
-  '007': new Character(
+  7: new Character(
     7, 'Death Eater 4', 6,
     2, 1, 1, Spell.TYPE_DARK,
     8, 0, 9, 4,
@@ -68,7 +68,7 @@ export default {
     1,
     2
   ),
-  '008': new Character(
+  8: new Character(
     8, 'Acromantula', 5,
     0, 1, 0, Spell.TYPE_NONE,
     0, 1, 1, 1,
@@ -78,7 +78,7 @@ export default {
     0,
     true
   ),
-  '009': new Character(
+  9: new Character(
     9, 'Acromantula Swarm', 4,
     0, 1, 0, Spell.TYPE_NONE,
     0, 1, 1, 1,
@@ -90,7 +90,7 @@ export default {
     1,
     5
   ),
-  '010': new Character(
+  10: new Character(
     10, 'Bellatrix Lestrange', 14,
     3, 2, 3, Spell.TYPE_DARK,
     9, 1, 10, 6,
@@ -99,7 +99,7 @@ export default {
     3,
     2
   ),
-  '011': new Character(
+  11: new Character(
     11, 'Peter Pettigrew', 10,
     2, 2, 2, Spell.TYPE_MIXED,
     0, 0, 1, 3,
@@ -108,7 +108,7 @@ export default {
     2,
     1
   ),
-  '017': new Character(
+  17: new Character(
     17, 'Draco Malfoy', 8,
     2, 1, 2, Spell.TYPE_MIXED,
     4, 8, 10, 1,
@@ -117,7 +117,7 @@ export default {
     2,
     2
   ),
-  '018': new Character(
+  18: new Character(
     18, 'Gregory Goyle', 5,
     1, 1, 1, Spell.TYPE_MIXED,
     1, 2, 7, 1,
@@ -126,7 +126,7 @@ export default {
     1,
     1
   ),
-  '019': new Character(
+  19: new Character(
     19, 'Vincent Crabbe', 5,
     1, 0, 1, Spell.TYPE_MIXED,
     1, 2, 7, 1,
@@ -135,7 +135,7 @@ export default {
     1,
     1
   ),
-  '020': new Character(
+  20: new Character(
     20, 'Luna Lovegood', 7,
     2, 1, 1, Spell.TYPE_LIGHT,
     3, 3, 2, 2,
@@ -144,7 +144,7 @@ export default {
     2,
     2
   ),
-  '021': new Character(
+  21: new Character(
     21, 'Cho Chang', 6,
     1, 1, 1, Spell.TYPE_LIGHT,
     4, 2, 3, 3,
@@ -153,7 +153,7 @@ export default {
     2,
     2
   ),
-  '022': new Character(
+  22: new Character(
     22, 'Ginny Weasley', 5,
     2, 1, 1, Spell.TYPE_LIGHT,
     3, 4, 4, 2,
@@ -162,7 +162,7 @@ export default {
     2,
     2
   ),
-  '023': new Character(
+  23: new Character(
     23, 'Fred Weasley', 8,
     2, 1, 1, Spell.TYPE_LIGHT,
     9, 3, 3, 2,
@@ -171,7 +171,7 @@ export default {
     2,
     2
   ),
-  '024': new Character(
+  24: new Character(
     24, 'George Weasley', 8,
     2, 1, 1, Spell.TYPE_LIGHT,
     9, 3, 3, 2,
@@ -180,7 +180,7 @@ export default {
     2,
     2
   ),
-  '029': new Character(
+  29: new Character(
     29, 'Severus Snape', 16,
     3, 3, 3, Spell.TYPE_MIXED,
     9, 3, 6, 7,
@@ -189,7 +189,7 @@ export default {
     3,
     2
   ),
-  '030': new Character(
+  30: new Character(
     30, 'Minerva McGonagall', 14,
     3, 2, 3, Spell.TYPE_LIGHT,
     9, 3, 6, 7,
@@ -198,7 +198,7 @@ export default {
     3,
     2
   ),
-  '031': new Character(
+  31: new Character(
     31, 'Dolores Umbridge', 10,
     2, 1, 2, Spell.TYPE_MIXED,
     5, 2, 8, 2,
@@ -207,7 +207,7 @@ export default {
     2,
     1
   ),
-  '032': new Character(
+  32: new Character(
     32,'Gilderoy Lockhart', 8,
     1, 1, 2, Spell.TYPE_MIXED,
     2, 2, 8, 2,
@@ -216,7 +216,7 @@ export default {
     1,
     1
   ),
-  '036': new Character(
+  36: new Character(
     36, 'Troll', 9,
     0, 1, 0, Spell.TYPE_NONE,
     0, 5, 3, 0,
@@ -227,7 +227,7 @@ export default {
     false,
     9
   ),
-  '037': new Character(
+  37: new Character(
     37, 'Dementor', 9,
     0, 2, 2, Spell.TYPE_DARK,
     5, 4, 10, 1,
@@ -238,7 +238,7 @@ export default {
     true,
     9
   ),
-  '038': new Character(
+  38: new Character(
     38, 'Unicorn', 8,
     0, 3, 2, Spell.TYPE_LIGHT,
     6, 6, 1, 7,
@@ -249,7 +249,7 @@ export default {
     false,
     9
   ),
-  '040': new Character(
+  40: new Character(
     40, 'Pansy Parkinson', 6,
     1, 0, 2, Spell.TYPE_LIGHT,
     4, 2, 9, 2,
@@ -258,7 +258,7 @@ export default {
     1,
     1
   ),
-  '041': new Character(
+  41: new Character(
     41, 'Neville Longbottom', 8,
     2, 1, 1, Spell.TYPE_LIGHT,
     3, 3, 5, 2,
@@ -267,7 +267,7 @@ export default {
     2,
     1
   ),
-  '042': new Character(
+  42: new Character(
     42, 'Cedric Diggory', 9,
     2, 1, 2, Spell.TYPE_LIGHT,
     6, 4, 2, 5,
@@ -276,7 +276,7 @@ export default {
     2,
     1
   ),
-  '043': new Character(
+  43: new Character(
     43, 'Albus Dumbledore', 18,
     3, 2, 4, Spell.TYPE_MIXED,
     12, 5, 2, 9,
@@ -285,7 +285,7 @@ export default {
     3,
     3
   ),
-  '044': new Character(
+  44: new Character(
     44, 'Argus Filch', 4,
     0, 1, 2, Spell.TYPE_LIGHT,
     0, 1, 10, 4,
@@ -294,7 +294,7 @@ export default {
     0,
     0
   ),
-  '045': new Character(
+  45: new Character(
     45, 'Kreacher', 9,
     0, 1, 3, Spell.TYPE_LIGHT,
     7, 3, 12, 2,
@@ -303,7 +303,7 @@ export default {
     1,
     0
   ),
-  '046': new Character(
+  46: new Character(
     46, 'Dobby', 10,
     0, 1, 3, Spell.TYPE_LIGHT,
     7, 4, 12, 4,
