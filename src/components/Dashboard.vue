@@ -48,7 +48,7 @@
         </td>
         <td>
           <span v-for="(item, index) in character.itemsChosen"
-                @click="character.itemsChosen(index, 1)">{{item.name}}</span>
+                @click="character.itemsChosen.splice(index, 1)">{{item.name}}</span>
         </td>
         <td>
           <dropdown :close-on-click="true" v-if="character.itemsChosen.length < character.items">
