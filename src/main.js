@@ -4,9 +4,13 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Dropdown from 'bp-vuejs-dropdown'
+import Vuetify from "vuetify"
 
 Vue.config.productionTip = false
 Vue.component('dropdown', Dropdown)
+Vue.use(Vuetify)
+
+export default new Vuetify({})
 
 /* eslint-disable no-new */
 new Vue({

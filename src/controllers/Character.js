@@ -67,6 +67,12 @@ export default class Character {
         return spell.name === spellName
       }) === -1
     }
+
+    this.doesNotHaveItem = function (itemName) {
+      return this.itemsChosen.findIndex( item => {
+        return item.name === itemName
+      }) === -1
+    }
   }
 
 }

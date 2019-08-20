@@ -5242,6 +5242,10 @@ vue@^2.5.13, vue@^2.5.2:
   version "2.6.10"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
 
+vuetify@^2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.0.7.tgz#a5985aca904c147e2febe4ca14e9c7ed26c4f011"
+
 watchpack@^1.4.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.6.0.tgz#4bc12c2ebe8aa277a71f1d3f14d685c7b446cd00"

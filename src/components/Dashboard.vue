@@ -47,13 +47,49 @@
           </dropdown>
         </td>
         <td>
-          <span v-for="(item, index) in character.itemsChosen" @click="character.itemsChosen(index, 1)">{{item.name}}</span>
+          <span v-for="(item, index) in character.itemsChosen"
+                @click="character.itemsChosen(index, 1)">{{item.name}}</span>
         </td>
-        <td></td>
+        <td>
+          <dropdown :close-on-click="true" v-if="character.itemsChosen.length < character.items">
+            <template slot="btn">Add item</template>
+            <template slot="body">
+              <ul>
+                <li>
+                  <dropdown :trigger="'hover'" :role="'sublist'" :align="'right'">
+                    <template slot="btn">Artefacts</template>
+                    <template slot="body">
+                      <ul>
+                        <li v-for="artefact in getItemOptionsForCharacter(character)['artefacts']" @click="character.itemsChosen.push(artefact)">
+                          {{artefact.name}} ({{artefact.cost}})
+                        </li>
+                      </ul>
+                    </template>
+                  </dropdown>
+                </li>
+                <li>
+                  <dropdown :trigger="'hover'" :role="'sublist'" :align="'right'">
+                    <template slot="btn">Potions</template>
+                    <template slot="body">
+                      <ul>
+                        <li v-for="potion in getItemOptionsForCharacter(character)['potions']" @click="character.itemsChosen.push(potion)">
+                          {{potion.name}} ({{potion.cost}})
+                        </li>
+                      </ul>
+                    </template>
+                  </dropdown>
+                </li>
+              </ul>
+            </template>
+          </dropdown>
+        </td>
         <td>
           <button @click="characters.splice(index, 1)">Verwijder</button>
         </td>
       </tr>
+      <!--      <v-snackbar v-model="snackbar">-->
+      <!--        {{spellHover}}-->
+      <!--      </v-snackbar>-->
       </tbody>
     </table>
   </div>
@@ -64,6 +100,8 @@
     import Affiliations from "@/controllers/DataTables/Affiliations"
     import Characters from "@/controllers/DataTables/Characters"
     import Spells from "@/controllers/DataTables/Spells"
+    import Artefacts from "@/controllers/DataTables/Artefacts"
+    import Potions from "@/controllers/DataTables/Potions"
 
     export default {
         data() {
@@ -72,6 +110,8 @@
                 chosen_affiliations: 'Hogwarts',
                 characters: [],
                 costLimit: 50,
+                snackbar: false,
+                spellHover: null,
             }
         },
         computed: {
@@ -99,7 +139,6 @@
                         while (!allCharactersFound) {
                             let index = finalOptions.findIndex((option) => {
                                 return option.name === character.name
-
                             })
 
                             if (index === -1) {
@@ -119,6 +158,20 @@
             },
             goldRemaining() {
                 return this.costLimit - this.costTotal
+            },
+            highestPotionLevel() {
+                let potioneerLevel = 0
+
+                this.characters.forEach(character => {
+                    for (let i = 1; i <= 3; i++) {
+                        if (character.traits.includes('Potioneer ' + i) && i > potioneerLevel) {
+                            potioneerLevel = i
+                            break
+                        }
+                    }
+                })
+
+                return potioneerLevel + 1
             }
         },
         methods: {
@@ -128,6 +181,26 @@
                 }).map(spellName => {
                     return Spells[spellName]
                 })
+            },
+            getItemOptionsForCharacter(character) {
+                let artefacts = Object.keys(Artefacts).filter(itemName => {
+                    let item = Artefacts[itemName]
+                    if (item === undefined) {
+                        item = Potions[itemName]
+                    }
+
+                    return item.cost <= this.goldRemaining && character.doesNotHaveItem(itemName) && this.requirementsFulfilled(character, item.requirements)
+                }).map(artefactName => {return Artefacts[artefactName]})
+                let potions = Object.keys(Potions).filter(itemName => {
+                    let item = Artefacts[itemName]
+                    if (item === undefined) {
+                        item = Potions[itemName]
+                    }
+
+                    return (item.cost <= this.goldRemaining) && character.doesNotHaveItem(itemName) && this.requirementsFulfilled(character, item.requirements) && (item.potionLevel <= this.highestPotionLevel)
+                }).map(potionName => {return Potions[potionName]})
+
+                return {'artefacts': artefacts, 'potions': potions}
             },
             requirementsFulfilled(character, requirements) {
                 switch (requirements) {
