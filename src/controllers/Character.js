@@ -50,7 +50,7 @@ export default class Character {
     this.spellsChosen = []
     this.itemsChosen = []
 
-    this.totalCost = function () {
+    this.totalCost = () => {
       let totalCost = this.cost
       this.spellsChosen.forEach(spell => {
         totalCost += spell.cost
