@@ -60,10 +60,6 @@
           id="item-dropdown"
           text="Add Item"
           v-if="artefacts.length + potions.length > 0">
-<!--          <b-dropdown-->
-<!--            id="artefacts-dropdown"-->
-<!--            text="Artefacts"-->
-<!--            v-if="artefacts.length > 0">-->
           <b-dropdown-header v-if="artefacts.length">Artefacts</b-dropdown-header>
             <b-dropdown-item-button
               v-for="(option, index) in artefacts"
@@ -105,6 +101,7 @@
     import Spells from "@/controllers/DataTables/Spells"
     import Artefacts from "@/controllers/DataTables/Artefacts"
     import Potions from "@/controllers/DataTables/Potions"
+    import Affiliations from "@/controllers/DataTables/Affiliations"
 
     export default {
         name: "character",
@@ -116,10 +113,32 @@
             }
         },
         methods: {
-            requirementsFulfilled(character, requirements) {
+            isUnique(itemName) {
+                return this.requirementsFulfilled('unique', itemName)
+            },
+            requirementsFulfilled(requirements, itemName = null) {
                 switch (requirements) {
                     case 'unforgivable':
-                        return character.traits.includes('Dark Arts')
+                        return this.character.traits.includes('Dark Arts')
+                    case 'unique':
+                        let isUnique = true
+                        this.$parent.$parent.characters.forEach(character => {
+                            character.itemsChosen.forEach(item => {
+                                if (item.name === itemName) isUnique = false
+                            })
+                        })
+                        return isUnique
+                    case 'deatheaters':
+                        return Affiliations["Death Eaters"].includes(this.character.id)
+                    case 'potter':
+                        return this.character.name.indexOf('Harry Potter') > -1 && this.isUnique(itemName)
+                    case 'hallows':
+                        let hasHallows = false
+                        this.character.itemsChosen.forEach(item => {
+                            if (item.requirements === 'hallows') hasHallows = true
+                        })
+
+                        return !hasHallows && this.isUnique(itemName)
                     default:
                         return true
                 }
@@ -136,7 +155,7 @@
                 return Object.keys(Spells).filter(spellName => {
                     return Spells[spellName].cost <= this.$parent.galleonsRemaining &&
                         this.character.doesNotHaveSpell(spellName) &&
-                        this.requirementsFulfilled(this.character, Spells[spellName].requirements) &&
+                        this.requirementsFulfilled(Spells[spellName].requirements) &&
                         this.character.spellsChosen.length < this.character.spellbook
                 }).map(spellName => {
                     return Spells[spellName]
@@ -160,7 +179,7 @@
                         if (
                             item.cost <= this.$parent.galleonsRemaining &&
                             this.character.doesNotHaveItem(itemName) &&
-                            this.requirementsFulfilled(this.character, item.requirements) &&
+                            this.requirementsFulfilled(item.requirements, item.name) &&
                             this.character.rarityAllowed(item.rarity) &&
                             (item.potionLevel === null || item.potionLevel <= this.$parent.$parent.highestPotionLevel)
                         ) {
