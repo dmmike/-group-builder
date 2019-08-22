@@ -32,40 +32,11 @@
         name: "group",
         components: {Character},
         methods: {
-            getItemOptionsForCharacter(character) {
-                let artefacts = Object.keys(Artefacts).filter(itemName => {
-                    let item = Artefacts[itemName]
-                    if (item === undefined) {
-                        item = Potions[itemName]
-                    }
-
-                    return item.cost <= this.$parent.galleonsRemaining && character.doesNotHaveItem(itemName) && this.requirementsFulfilled(character, item.requirements)
-                }).map(artefactName => {
-                    return Artefacts[artefactName]
-                })
-                let potions = Object.keys(Potions).filter(itemName => {
-                    let item = Artefacts[itemName]
-                    if (item === undefined) {
-                        item = Potions[itemName]
-                    }
-
-                    return (item.cost <= this.$parent.galleonsRemaining) && character.doesNotHaveItem(itemName) && this.requirementsFulfilled(character, item.requirements) && (item.potionLevel <= this.highestPotionLevel)
-                }).map(potionName => {
-                    return Potions[potionName]
-                })
-
-                return {'artefacts': artefacts, 'potions': potions}
-            },
-            requirementsFulfilled(character, requirements) {
-                switch (requirements) {
-                    case 'unforgivable':
-                        return character.traits.includes('Dark Arts')
-                    default:
-                        return true
-                }
-            },
         },
         computed: {
+            galleonsRemaining() {
+                return this.$parent.galleonLimit - this.$parent.galleonsSpent
+            },
             options() {
                 let options = []
 
@@ -96,7 +67,7 @@
                 })
 
                 finalOptions = finalOptions.filter(character => {
-                    return character.cost <= this.$parent.galleonsRemaining
+                    return character.cost <= this.galleonsRemaining
                 })
 
                 return _.orderBy(finalOptions, 'name')

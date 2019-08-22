@@ -1,4 +1,5 @@
 import Spell from "@/controllers/Spell"
+import Item from "@/controllers/Item"
 
 export default class Character {
   /**
@@ -69,9 +70,28 @@ export default class Character {
     }
 
     this.doesNotHaveItem = function (itemName) {
-      return this.itemsChosen.findIndex( item => {
+      return this.itemsChosen.findIndex(item => {
         return item.name === itemName
       }) === -1
+    }
+
+    this.rarityAllowed = function (rarity) {
+      let maxCount = 0
+      let count = 0
+      switch (rarity) {
+        case Item.RARITY_COMMON:
+          return true
+        case Item.RARITY_RARE:
+          maxCount = 3
+        case Item.RARITY_LEGENDARY:
+          maxCount = 1
+        default:
+          this.itemsChosen.forEach(item => {
+            if (item.rarity === rarity) count++
+          })
+
+          return count < maxCount
+      }
     }
 
     this.resetCharacter = () => {

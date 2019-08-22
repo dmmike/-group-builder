@@ -47,9 +47,6 @@
                 })
                 return cost
             },
-            galleonsRemaining() {
-                return this.galleonLimit - this.galleonsSpent
-            },
             highestPotionLevel() {
                 let potioneerLevel = 0
 
