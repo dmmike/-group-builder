@@ -73,6 +73,11 @@ export default class Character {
         return item.name === itemName
       }) === -1
     }
+
+    this.resetCharacter = () => {
+      this.spellsChosen = []
+      this.itemsChosen = []
+    }
   }
 
 }

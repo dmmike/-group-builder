@@ -2,19 +2,22 @@
   <b-card id="group" class="mb-0 text-center">
     <b-row slot="header">
       <b-col>
-        <h4>Group</h4>
+        <b-dropdown
+          id="character-dropdown"
+          class="float-right"
+          :text="orderedFilteredOptions.length === 0 ? 'No Options' : 'Add a character'"
+          :disabled="orderedFilteredOptions.length === 0">
+          <b-dropdown-item-button
+            v-for="(option, index) in orderedFilteredOptions"
+            :key="index" @click="$parent.characters.push(option)">
+            {{option.name}} ({{option.cost}})
+          </b-dropdown-item-button>
+        </b-dropdown>
       </b-col>
-      <b-dropdown
-        id="character-dropdown"
-        class="float-right"
-        :text="orderedFilteredOptions.length === 0 ? 'No Options' : 'Add a character'"
-        :disabled="orderedFilteredOptions.length === 0">
-        <b-dropdown-item-button
-          v-for="(option, index) in orderedFilteredOptions"
-          :key="index" @click="$parent.characters.push(option)">
-          {{option.name}} ({{option.cost}})
-        </b-dropdown-item-button>
-      </b-dropdown>
+    </b-row>
+
+    <b-row v-for="(character, index) in $parent.characters" :key="index">
+      <character class="character" :character="character" @deleteCharacter="$parent.characters.splice(index, 1); character.resetCharacter()"></character>
     </b-row>
   </b-card>
 </template>
@@ -23,17 +26,12 @@
     import _ from 'lodash'
     import Characters from "@/controllers/DataTables/Characters"
     import Affiliations from "@/controllers/DataTables/Affiliations"
+    import Character from "@/components/Character"
 
     export default {
         name: "group",
+        components: {Character},
         methods: {
-            getSpellOptionsForCharacter(character) {
-                return Object.keys(Spells).filter(spellName => {
-                    return Spells[spellName].cost <= this.$parent.galleonsRemaining && character.doesNotHaveSpell(spellName) && this.requirementsFulfilled(character, Spells[spellName].requirements)
-                }).map(spellName => {
-                    return Spells[spellName]
-                })
-            },
             getItemOptionsForCharacter(character) {
                 let artefacts = Object.keys(Artefacts).filter(itemName => {
                     let item = Artefacts[itemName]
@@ -108,5 +106,7 @@
 </script>
 
 <style scoped>
-
+  .character {
+    margin-bottom: 10px
+  }
 </style>
